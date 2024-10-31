@@ -1,0 +1,83 @@
+[
+    {
+      "name": "Wireless Earbuds",
+      "description": "High-quality wireless earbuds with noise cancellation and long battery life.",
+      "price": 79.99,
+      "tags": "electronics, audio, wireless, earbuds",
+      "createdAt": "2024-10-20T00:00:00Z",
+      "updatedAt": "2024-10-20T00:00:00Z"
+    },
+    {
+      "name": "Stainless Steel Water Bottle",
+      "description": "Insulated stainless steel water bottle, keeps drinks cold for 24 hours and hot for 12 hours.",
+      "price": 25.50,
+      "tags": "outdoor, hydration, stainless steel, eco-friendly",
+      "createdAt": "2024-10-20T00:00:00Z",
+      "updatedAt": "2024-10-20T00:00:00Z"
+    },
+    {
+      "name": "Yoga Mat",
+      "description": "Non-slip yoga mat made from eco-friendly materials, ideal for all fitness levels.",
+      "price": 35.00,
+      "tags": "fitness, yoga, wellness, eco-friendly",
+      "createdAt": "2024-10-20T00:00:00Z",
+      "updatedAt": "2024-10-20T00:00:00Z"
+    },
+    {
+      "name": "Bluetooth Speaker",
+      "description": "Portable Bluetooth speaker with rich sound and waterproof design for outdoor use.",
+      "price": 59.99,
+      "tags": "electronics, audio, portable, Bluetooth",
+      "createdAt": "2024-10-20T00:00:00Z",
+      "updatedAt": "2024-10-20T00:00:00Z"
+    },
+    {
+      "name": "Organic Coffee Beans",
+      "description": "Premium organic coffee beans sourced from sustainable farms, medium roast.",
+      "price": 12.99,
+      "tags": "food, beverages, organic, coffee",
+      "createdAt": "2024-10-20T00:00:00Z",
+      "updatedAt": "2024-10-20T00:00:00Z"
+    },
+    {
+      "name": "LED Desk Lamp",
+      "description": "Adjustable LED desk lamp with multiple brightness levels and USB charging port.",
+      "price": 45.00,
+      "tags": "home, lighting, desk lamp, LED",
+      "createdAt": "2024-10-20T00:00:00Z",
+      "updatedAt": "2024-10-20T00:00:00Z"
+    },
+    {
+      "name": "Fitness Tracker",
+      "description": "Advanced fitness tracker with heart rate monitoring, sleep tracking, and smartphone notifications.",
+      "price": 99.99,
+      "tags": "fitness, technology, wearables, health",
+      "createdAt": "2024-10-20T00:00:00Z",
+      "updatedAt": "2024-10-20T00:00:00Z"
+    },
+    {
+      "name": "Non-Stick Cookware Set",
+      "description": "10-piece non-stick cookware set, perfect for all types of cooking.",
+      "price": 150.00,
+      "tags": "kitchen, cookware, non-stick, home",
+      "createdAt": "2024-10-20T00:00:00Z",
+      "updatedAt": "2024-10-20T00:00:00Z"
+    },
+    {
+      "name": "Graphic T-Shirt",
+      "description": "Comfortable cotton graphic t-shirt with unique designs, available in various colors.",
+      "price": 19.99,
+      "tags": "apparel, clothing, graphic tee, casual",
+      "createdAt": "2024-10-20T00:00:00Z",
+      "updatedAt": "2024-10-20T00:00:00Z"
+    },
+    {
+      "name": "Indoor Herb Garden Kit",
+      "description": "Complete indoor herb garden kit with pots, soil, and seeds for easy growing.",
+      "price": 29.99,
+      "tags": "gardening, indoor, herbs, home",
+      "createdAt": "2024-10-20T00:00:00Z",
+      "updatedAt": "2024-10-20T00:00:00Z"
+    }
+  ]
+  
