@@ -2,32 +2,13 @@ import * as jwt from "jsonwebtoken";
 import { JWT_SECRET } from "../secrets";
 import nodemailer from "nodemailer";
 import crypto from "crypto";
-import { BadRequestException } from "exceptions/bad-request";
-
-interface CookieOptions {
-  httpOnly: boolean;
-  secure: boolean;
-  maxAge: number;
-}
-
-interface TokenResponse {
-  token: string;
-  options: CookieOptions;
-}
-
-interface SendEmailInterface {
-  emailTo: string;
-  subject: string;
-  html: string;
-}
-
-interface SendVerificationEmailInterface {
-  name: string;
-  emailTo: string;
-  verificationToken: string;
-  origin: string;
-  type: "verification" | "resetPassword";
-}
+import { BadRequestException } from "../exceptions/bad-request";
+import {
+  CookieOptions,
+  TokenResponse,
+  SendEmailInterface,
+  SendVerificationEmailInterface,
+} from "./interfaces";
 
 const nodemailerConfig = {
   host: "smtp.gmail.com",
@@ -58,32 +39,30 @@ export const sendEmailNotification = async ({
   verificationToken,
   origin,
   type,
-}: SendVerificationEmailInterface): Promise<any> => {
-  const subjects = {
-    verification: "Email Confirmation",
-    resetPassword: "Reset Password",
+}: SendVerificationEmailInterface): Promise<void> => {
+  const emailDetails = {
+    verification: {
+      subject: "Email Confirmation",
+      message: `<p>Please confirm your email by clicking on the following link: 
+                <a href="${origin}/user/verify-email?token=${verificationToken}&email=${emailTo}">Verify Email</a></p>`,
+    },
+    resetPassword: {
+      subject: "Reset Password",
+      message: `<p>Please reset your password by clicking on the following link: 
+                <a href="${origin}/user/reset-password?token=${verificationToken}&email=${emailTo}">Reset Password</a></p>`,
+    },
   };
 
-  const actionURLs = {
-    verification: `${origin}/user/verify-email?token=${verificationToken}&email=${emailTo}`,
-    resetPassword: `${origin}/user/reset-password?token=${verificationToken}&email=${emailTo}`,
-  };
+  const emailContent = emailDetails[type];
 
-  const messages = {
-    verification: `<p>Please confirm your email by clicking on the following link: 
-        <a href="${actionURLs.verification}">Verify Email</a></p>`,
-    resetPassword: `<p>Please reset your password by clicking on the following link: 
-        <a href="${actionURLs.resetPassword}">Reset Password</a></p>`,
-  };
-
-  if (!subjects[type] || !messages[type]) {
+  if (!emailContent) {
     throw new BadRequestException("Invalid email type", 400, null);
   }
 
-  return sendEmail({
+  await sendEmail({
     emailTo,
-    subject: subjects[type],
-    html: `<h4>Hello, ${name}</h4>${messages[type]}`,
+    subject: emailContent.subject,
+    html: `<h4>Hello, ${name}</h4>${emailContent.message}`,
   });
 };
 

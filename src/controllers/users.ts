@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import {
   AddressSchemaValidator,
   UpdateUserSchemaValidator,
-} from "../schema/users";
+} from "../validation/users";
 import { prismaClient } from "..";
 import { Address } from "@prisma/client";
 import { BadRequestException } from "../exceptions/bad-request";

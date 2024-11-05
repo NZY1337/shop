@@ -5,7 +5,7 @@ import { BadRequestException } from "../exceptions/bad-request";
 import { ErrorCode } from "../exceptions/root";
 import { NotFoundException } from "../exceptions/not-found";
 import { generateToken, createHash, sendEmailNotification } from "../utils";
-import { SignupSchemaValidator } from "../schema/users";
+import { SignupSchemaValidator } from "../validation/users";
 import crypto from "crypto";
 import { UnauthorizedException } from "../exceptions/unauthorized";
 

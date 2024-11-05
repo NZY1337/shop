@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import {
   CartSchemaValidator,
   ChangeQuantitySchemaValidator,
-} from "../schema/cart";
+} from "../validation/cart";
 import { Product, CartItem } from "@prisma/client";
 import { prismaClient } from "..";
 
