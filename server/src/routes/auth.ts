@@ -21,6 +21,5 @@ authRouter.post("/reset-password", errorHandler(resetPassword));
 authRouter.post("/validate", errorHandler(validateUserEmail));
 authRouter.delete("/logout", errorHandler(logout));
 authRouter.get("/user", [authMiddleware], errorHandler(getUser));
-authRouter.get("/user", [authMiddleware], errorHandler(getUser));
 
 export default authRouter;

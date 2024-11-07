@@ -178,7 +178,7 @@ export const resetPassword = async (req: Request, res: Response) => {
 };
 
 export const getUser = async (req: Request, res: Response) => {
-  res.status(200).json(req.user); // passed from MIDDLEWARE
+  res.status(200).json({ user: req.user }); // passed from MIDDLEWARE
 };
 
 export const logout = async (req: Request, res: Response) => {
