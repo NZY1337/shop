@@ -1,11 +1,12 @@
-import { useState } from 'react'
+import { useState,  } from 'react'
 import './App.css'
 import { useUser } from './context/UserContext'
 import axiosInstance from './utils/axiosInstance';
 
 function App() {
   const [count, setCount] = useState(0);
-  const { loginUser, user } = useUser();
+  const { loginUser, user, logoutUser } = useUser();
+
   
   const fetchData = async () => {
     try {
@@ -18,14 +19,15 @@ function App() {
     } catch (error) {
       console.error('Error fetching data:', error);
     }
-  };    
+  };   
+  
 
   return (
     <>
       <div>
-        <button onClick={() => loginUser({ password: 'secret', email: 'mandreicosmin@yahoo.com' })}>
+        {!user && <button onClick={() => loginUser({ password: 'secret', email: 'mandreicosmin@yahoo.com' })}>
             Log In
-        </button>
+        </button>}
       </div>
       <h1>Vite + React</h1>
       <div className="card">
@@ -36,6 +38,9 @@ function App() {
         <button onClick={fetchData}>Register</button>
 
         {user ? <p>Welcome, {user?.name}</p> : <p>Please log in</p>}
+
+        {user && <button onClick={logoutUser}>LogOut</button>}
+
       </div>
       
     </>
