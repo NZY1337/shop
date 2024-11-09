@@ -24,15 +24,15 @@ const Navigation: React.FC = () => {
                     Swift Fuel
                 </Typography>
             </Box> 
-            
-            <Box sx={{ display: { xs: "none", md: "flex" } }}>
-                <MenuList sx={{ display: "flex" }}>
+                                                            
+            <Box sx={{ display: { xs: "none", md: "flex" }}}>
+                <MenuList sx={{display: "flex"}}>
                     <MenuItem disableRipple>
                         <Link component={ReactRouterLink} to="/">
-                            Energy
+                            Energy  
                         </Link>
                     </MenuItem>
-
+                    
                     <MenuItem disableRipple>
                         <Link component={ReactRouterLink} to="/test1">
                             Supply
@@ -44,7 +44,7 @@ const Navigation: React.FC = () => {
                             Partners
                         </Link>
                     </MenuItem>
-
+                    
                     {!user && (
                         <MenuItem  disableRipple>
                             <Button variant='contained' color="primary" onClick={() => loginUser({ password: 'secret', email: 'mandreicosmin@yahoo.com' })}>
@@ -60,7 +60,7 @@ const Navigation: React.FC = () => {
                             </Link>
                         </MenuItem>
                     )}
-
+                    
                     {user && 
                         <MenuItem disableRipple>
                             <Button  variant='contained' color="error" onClick={logoutUser}>

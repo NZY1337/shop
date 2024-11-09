@@ -29,6 +29,7 @@ const useStyles = makeStyles((ctx) =>
                 outline: 'none'
             }
         },
+
         toolbar: {
             padding: 0, 
             display: 'flex', 
@@ -39,6 +40,7 @@ const useStyles = makeStyles((ctx) =>
                 fontWeight: 'bold',
             },
         },
+        
         hiUser: {
             '& .MuiTypography-root.MuiLink-root': {
                 color: 'orange',
