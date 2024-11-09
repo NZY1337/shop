@@ -37,6 +37,18 @@ export const prismaClient = new PrismaClient({
         },
       },
     },
+    // user: {
+    //   withoutPassword: {
+    //     needs: {
+    //       password: true,
+    //       name: true,
+    //     },
+    //     compute: (user) => {
+    //       const { password, ...userWithoutPassword } = user;
+    //       return userWithoutPassword;
+    //     },
+    //   },
+    // },
   },
 });
 

@@ -6,7 +6,9 @@ export interface CookieOptions {
 
 export interface TokenResponse {
   token: string;
+  refreshToken: string;
   options: CookieOptions;
+  refreshOptions: CookieOptions;
 }
 
 export interface SendEmailInterface {

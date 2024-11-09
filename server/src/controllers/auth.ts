@@ -7,6 +7,9 @@ import { NotFoundException } from "../exceptions/not-found";
 import { generateToken, createHash, sendEmailNotification } from "../utils";
 import { SignupSchemaValidator } from "../validation/users";
 import crypto from "crypto";
+import jwt from "jsonwebtoken";
+import { JWT_SECRET } from "../secrets";
+import { User } from "@prisma/client";
 import { UnauthorizedException } from "../exceptions/unauthorized";
 
 const origin = "http://localhost:3000";
@@ -35,8 +38,11 @@ export const signUp = async (req: Request, res: Response) => {
     },
   });
 
-  const { token, options } = generateToken(user.id);
+  const { token, refreshToken, options, refreshOptions } = generateToken(
+    user.id
+  );
   res.cookie("token", token, options);
+  res.cookie("refreshToken", refreshToken, refreshOptions);
 
   await sendEmailNotification({
     name: user.name,
@@ -75,9 +81,12 @@ export const signIn = async (req: Request, res: Response) => {
     );
   }
 
-  const { token, options } = generateToken(user.id);
-
+  const { token, refreshToken, options, refreshOptions } = generateToken(
+    user.id
+  );
   res.cookie("token", token, options);
+  res.cookie("refreshToken", refreshToken, refreshOptions);
+
   res.status(200).json({ user });
 };
 
@@ -187,5 +196,34 @@ export const logout = async (req: Request, res: Response) => {
     expires: new Date(Date.now()),
   });
 
+  res.cookie("refreshToken", "logout", {
+    httpOnly: true,
+    expires: new Date(Date.now()),
+  });
+
   res.status(200).json({ msg: "user logged out!" });
+};
+
+export const refreshToken = async (req: Request, res: Response) => {
+  const refreshToken = req.cookies.refreshToken;
+
+  if (!refreshToken) {
+    throw new UnauthorizedException("Unauthorized", ErrorCode.UNAUTHORIZED);
+  }
+
+  const payload = jwt.verify(refreshToken, JWT_SECRET) as any;
+  const user: User | null = await prismaClient.user.findFirst({
+    where: {
+      id: payload?.userId,
+    },
+  });
+
+  if (!user) {
+    throw new UnauthorizedException("Unauthorized", ErrorCode.UNAUTHORIZED);
+  }
+
+  const { token, options } = generateToken(user.id);
+  res.cookie("token", token, options);
+
+  res.status(200).json({ token });
 };

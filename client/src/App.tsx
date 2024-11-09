@@ -1,50 +1,18 @@
-import { useState,  } from 'react'
-import './App.css'
-import { useUser } from './context/UserContext'
-import axiosInstance from './utils/axiosInstance';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import './App.css';
+import TestComponent2 from './TestComponent2';
+import TestComponent1 from './TestComponent1';
+import Hero from './components/homepage/Hero';
 
 function App() {
-  const [count, setCount] = useState(0);
-  const { loginUser, user, logoutUser } = useUser();
-
-  
-  const fetchData = async () => {
-    try {
-      const response = await axiosInstance.post('/auth/signUp', {
-        name: "Andrei Mocanu",
-        email: "mandreicosmin@yahoo.com",
-        password: "secret",
-      });
-      console.log(response.data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };   
-  
-
   return (
-    <>
-      <div>
-        {!user && <button onClick={() => loginUser({ password: 'secret', email: 'mandreicosmin@yahoo.com' })}>
-            Log In
-        </button>}
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        
-        <button onClick={fetchData}>Register</button>
+    <Router>
+        <Routes>
+            <Route path="/" element={<Hero />} />
+            <Route path="/test1" element={<TestComponent1 />} />
+            <Route path="/test2" element={<TestComponent2 />} />
+        </Routes>
+    </Router>
+    )};
 
-        {user ? <p>Welcome, {user?.name}</p> : <p>Please log in</p>}
-
-        {user && <button onClick={logoutUser}>LogOut</button>}
-
-      </div>
-      
-    </>
-  )
-}
-
-export default App
+export default App;

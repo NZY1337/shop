@@ -52,34 +52,47 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children } : any) =>
     }
   }
 
+  const fetchData = async () => {
+    try {
+      const response = await axiosInstance.post('/auth/signUp', {
+        name: "Andrei Mocanu",
+        email: "mandreicosmin@yahoo.com",
+        password: "secret",
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+  
   const value = React.useMemo(() => ({ user, loginUser, logoutUser, getUser }), [user]);
 
   useEffect(() => {     
     getUser()
   } , []);
 
-  useEffect(() => {
-    let interval: NodeJS.Timeout;
-    if (sessionExpirationTime !== undefined && sessionExpirationTime > 0) {
-      interval = setInterval(() => {
-        setSessionExpirationTime((prevSessionExpirationTime) => {
-            const newExpiringInterval = prevSessionExpirationTime - 1;
-            if (newExpiringInterval <= 0) {
-              clearInterval(interval);
-              console.log('Session expired');
-            //   logoutUser();
-              return 0;
-            } else if (newExpiringInterval <= 10) {
-              console.log('session expires in: ', newExpiringInterval);
-            } else {
-                console.log('session is about to expire in: ', newExpiringInterval);
-            }
-            return newExpiringInterval;
-        });
-      }, 1000);
-    }
-    return () => clearInterval(interval);
-  }, [sessionExpirationTime, user]);
+//   useEffect(() => {
+//     let interval: NodeJS.Timeout;
+//     if (sessionExpirationTime !== undefined && sessionExpirationTime > 0) {
+//       interval = setInterval(() => {
+//         setSessionExpirationTime((prevSessionExpirationTime) => {
+//             const newExpiringInterval = prevSessionExpirationTime - 1;
+//             if (newExpiringInterval <= 0) {
+//               clearInterval(interval);
+//               console.log('Session expired');
+//             //   logoutUser();
+//               return 0;
+//             } else if (newExpiringInterval <= 10) {
+//               console.log('session expires in: ', newExpiringInterval);
+//             } else {
+//                 console.log('session is about to expire in: ', newExpiringInterval);
+//             }
+//             return newExpiringInterval;
+//         });
+//       }, 1000);
+//     }
+//     return () => clearInterval(interval);
+//   }, [sessionExpirationTime, user]);
 
   return (
     <UserContext.Provider value={value}>
