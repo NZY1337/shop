@@ -48,7 +48,6 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children } : any) =>
       setUser(response.data.user);
       setSessionExpirationTime(response.data.user.isExpiringSoon);
     } catch (error) {
-      console.error('Error fetching user:', error);
     }
   }
 
