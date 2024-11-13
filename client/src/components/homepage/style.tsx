@@ -23,10 +23,7 @@ const useStyles = makeStyles(() =>
             height: '100vh',
             maxWidth: '100%',
             overflow: 'hidden',
-            backgroundImage: `
-            linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
-            url(https://images.pexels.com/photos/2267157/pexels-photo-2267157.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)
-          `,
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(https://images.pexels.com/photos/2267157/pexels-photo-2267157.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
         },
@@ -47,6 +44,39 @@ const useStyles = makeStyles(() =>
             flexGrow: 1,
             color: '#fff',
         },
+        columnParent: {
+            padding: 10
+        },
+        columnChild: {
+            // cursor: 'pointer',
+            // position: 'relative',
+            // border: ".5px dashed transparent",
+            // borderColor: 'orange',
+            // borderRadius: 5,
+            // opacity: 0.75,
+            // transition: 'opacity 0.25s ease-in-out',
+            // "&:hover": {
+            //     opacity: 1,
+            // },
+
+            // "& svg": {
+            //     borderRadius: 5,
+            //     opacity: 0.75,
+            //     color: 'orange',
+            // },
+
+            // "&:hover svg": {
+            //     opacity: 1,
+            // },
+
+            // "& .columnControls": {
+            //     display: 'inline-block',
+            //     position: 'absolute',
+            //     top: '50%',
+            //     left: '50%',
+            //     transform: 'translate(-50%, -50%)',
+            // }
+        }
     })
 );
 

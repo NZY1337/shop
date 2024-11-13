@@ -26,7 +26,6 @@ const useStyles = makeStyles((ctx) =>
                 opacity: 'inherit'
             },
             '& .MuiPaper-root': {  
-                background: 'rgb(63,94,251)',
                 background: 'radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(84,51,58,1) 100%)',
                 color: 'lightgray',
             },
