@@ -21,20 +21,28 @@ interface HeroProps {
     gridSpacing: number;
 }
 
-const iconMapping = {
-    AddIcon: AddIcon,
-    DeleteIcon: DeleteIcon,
-    AddCircleIcon: AddCircleIcon,
-  };
+
 
 const Hero: React.FC<HeroProps> = ({ handleOpen, handleClose, open, gridSpacing }) => {
     const classes = useHeroStyle();
     const [data, setData] = useState<DataArray>(settings);
 
+    const iconMapping = {
+        AddIcon: AddIcon,
+        DeleteIcon: DeleteIcon,
+        AddCircleIcon: AddCircleIcon,
+    };
+
+    const actionMapping = {
+        openModal: handleOpen,
+        test: () => console.log('test'),
+    }
+    
+
     // const handleDeleteColumn = (id: number) => {
     //     setColumnData(prev => prev.filter((column, i) => column.id !== id));
     // };
-
+    
     return (
         <Container maxWidth={false} className={classes.container}>
             <Navigation />
@@ -84,6 +92,8 @@ const Hero: React.FC<HeroProps> = ({ handleOpen, handleClose, open, gridSpacing 
                                             
                                             {column.columnButton.enabled && (
                                                     <Button 
+                                                        onClick={column?.columnButton?.action(actionMapping['test'])}
+                                                        size={column.columnButton.size}  
                                                         sx={{
                                                             ...column.columnButton.sx,
                                                             ...column.columnButton.getButtonStyles(iconPosition),

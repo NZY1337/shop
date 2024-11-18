@@ -12,12 +12,13 @@ function App() {
     const [gridData, setGridData] = useState<DataArray>([])
 
     const handleClose = () => setOpen(false);
-
+    
     const handleOpen = (e: MouseEvent) => {
         e.stopPropagation();
+        console.log('open modal')
         setOpen(true)
     }
-
+    
     const onHandleAddGridSpacing = (value: 'inc' | 'dec') => {
         setGridSpacing(spacing => {
             if (value === 'dec' && spacing > 2) {
@@ -28,8 +29,7 @@ function App() {
             return spacing;
         });
     }
-
-
+                                                                                        
     return (
         <>
             <CssBaseline />

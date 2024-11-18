@@ -48,34 +48,7 @@ const useStyles = makeStyles(() =>
             padding: 10
         },
         columnChild: {
-            // cursor: 'pointer',
-            // position: 'relative',
-            // border: ".5px dashed transparent",
-            // borderColor: 'orange',
-            // borderRadius: 5,
-            // opacity: 0.75,
-            // transition: 'opacity 0.25s ease-in-out',
-            // "&:hover": {
-            //     opacity: 1,
-            // },
-
-            // "& svg": {
-            //     borderRadius: 5,
-            //     opacity: 0.75,
-            //     color: 'orange',
-            // },
-
-            // "&:hover svg": {
-            //     opacity: 1,
-            // },
-
-            // "& .columnControls": {
-            //     display: 'inline-block',
-            //     position: 'absolute',
-            //     top: '50%',
-            //     left: '50%',
-            //     transform: 'translate(-50%, -50%)',
-            // }
+           
         }
     })
 );
